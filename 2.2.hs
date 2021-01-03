@@ -10,16 +10,12 @@ main = do
   where
     parseLine line = convert (words line)
       where
-        convert []     = (0, 0, 'a', "a")   -- debug
-        convert [_]    = (1, 0, 'a', "a")   -- debug
-        convert [_, _] = (2, 0, 'a', "a")   -- debug
         convert [rep, ch, pswd] =
             ( read (head (split rep)) :: Int
             , read (last (split rep)) :: Int
             , head ch
             , pswd
             )
-        convert (_ : _ : _ : _ : _) = (4, 0, 'a', "a")    -- debug
     accu tup
         | -- basically an xor
           match_1 /= match_2 = (+ 1)
